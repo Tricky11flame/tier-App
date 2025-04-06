@@ -1,203 +1,189 @@
-# vite-env.d.ts 
->   what does it do ? it had a very simple line
+# 🏆 Tier Maker App
 
-# types.ts 
-    Id , color , column , Task
+A simplified version of the popular TierMaker platform. This web app allows users to create, customize, and export tier lists visually—ideal for ranking anything from anime characters to startup ideas.
 
-# main.tsx 
->   BrowserRouter
->   React.StrictMode
-    basic file nothing much to talk about
+## 🔗 Project Description
 
-# index.css
->   empty??
+This project lets users:
+- Upload or select items to rank
+- Drag and drop items into different tier categories (S, A, B, etc.)
+- Customize tier names and colors
+- Export the tier list as an image
 
-# App.tsx !!!
->   Routers , Route from react-router-dom
-    Gives out <KanbanBoard/> @ "/"
+Built using:
+- **Next.js** for frontend routing and page generation
+- **Tailwind CSS** for fast, utility-first styling
+- Optionally used **Material UI** (due to earlier integration conflicts)
 
-# App.css
->    3 monkies of tailwind
->   -webkit-scrollbar , -webkit-scrollbar:horizontal ,-webkit-scrollbar-thumb , .task> -webkit-scrollbar-thumb
-    applies scrolling to major components
-    used to implement tailwind
+## 📸 Screenshots
 
-# ./scripts(1) > lmao.js
-> idk why is it being used i think it would be an issue of tailwind css
-> nvm it its ok
-    generate a a string of color and power
+ - [Screenshots]()
 
-# ./icons(3) > PulsIcon PokeIcon TrashIcon
- they use svg and drawing to make  a icon 
-> interesting approach  if you ask me
-> totally imported
+## 🚀 Getting Started
 
-# ./constants(2) > defaultCols defaultTasks
-> fair enough pretyu simple code 
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/Tricky11flame/tier-App.git
+   cd tier-App
+   ```
 
-# ./components(4) > TheVoid TaskCard KanbanBoard ColumnContainer
-> ahh the most anxiety driving component in my whole code base :p
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-## TheVoid.tsx
-    dnd-kit/sortable
-        SortableContext : 
-        useSortable() : 
-    dnd-kit/utilities
-        CSS :
-    useMemo() in react
-        task.id
-        creates a memo of id from tasks objects
-    ./Components
-        TaskCard.tsx
-    ./types
-        Column , Id , Task
-    
-    define the props type for the root components
-    interface prop 
-        Column,function(Id),Task[]
-    
-### destructure the useSortable
-        useSortable
-            id , {type,column}  ->  
-                setNodeRef,transform,transition
-        setNodeRef
-        transform
-        transition
+3. **Run the App Locally**
+   ```bash
+   npm run dev
+   ```
 
-    style object  
-        transition , transform
-### DOM strcuture 
-        Col Title
-        Task Flex
-            SortableContext 
-                taskIds: taskId[] < from useMemo() >
-                maps task -> Card
-                    key , task , deleteTask
-        
+4. **Note:** This project may require forced dependency fixes:
+   ```bash
+   npm audit fix --force
+   ```
 
+> ⚠️ **Disclaimer**: This project is no longer actively maintained. Some dependencies may be outdated or broken without force fixes.
 
+## 🧩 Features
 
+- Drag-and-drop interface
+- Custom tier labels and colors
+- Image-based items or name tags
+- Export final tier list as an image or screenshot
 
-## TaskCard
-    useSate()
-    Id,Task
-    dnd-kit/sortable
-        useSortable()
-    dnd-kit/utilities
-        CSS
-    
-    useState
-        mouseIsOver : boolean
-        editMode : boolean
-    
-### useSortable
-    deconstruction: 
-        attributes < new >
-        listeners < new >
-        transform
-        tranition
-        isDragging < new >
-    params:
-        id, data , disabled (editMode)
-    toggleEditMode
+## 💡 Inspiration
 
-    isDragging :
-        this is interesting but works !!! 
-    otherwise :
-        VisibleTask
-            onClick
-            className
-            ref !!!
-            attributes deconstruction !!!
-            listeners destructuction !!!
-            onMouseEnter
-            onMouseLeave
+Inspired by [TierMaker](https://tiermaker.com), but built as a personal project to understand dynamic rendering, user state, and media uploads.
 
-            <img>
-            mouseIsOver? <Trash Button>
+## 🛠 Tech Stack
 
-## KanbanBoard
-    react
-        useEffect!!! useMemo useState
-    axios
-    dnd-kit/core !!!
-        DnDContext
-        DragEndEvent
-        DragOverlay
-        DragStartEvent
-        PointerSensor
-        useSensor
-        useSensors
-    dnd-kit/sortable
-        SortableContext
-        arrayMove
-    
-    wtf is useEffect doingggg!!! T-T
-    States
-        columns tasks activeColumn activeTask
-    Memo
-        Colums.Id[]
-    sensor : using dnd-kit/core sensor tools !!!
-  
-  return<>
-    fullBoard
-        DndContext : sensors onDragStart onDragEnd onDragOver
-            SortableContext :item=ColId ,maps ColContainer with element c in cols
-            TheVoid
+- [React.js]
+- [Tailwind CSS](https://tailwindcss.com/)
+- [DnD-Kit](https://react-dnd.github.io/react-dnd/about)
 
-            Create Button
-            Save Button
+## 🧪 Potential Improvements
 
-            DragOverlay
-                activeColumn? ColContainer
-                activeTask? TaskCard
-    </>
+- Tier sharing via link
+- Mobile responsiveness
+- Image Uplpoad
+- PreBuilt Tier templates (anime, tech stack, etc.)
+- Add login & save functionality
 
-  functions 
-    deleteTask()
-    ...
-    createNewColumn()
-    deleteColumn()
-    updateColumn()
-    ...
-    *onDragStart()   !!!
-    *onDragEnd()     !!!
-    *onDragOver()    !!!
-    ...
-    generateId()
-    saveData()
+## 📦 Folder Structure
 
-## ColumnContainer
-    dnd-kit/sortable
-        SortableContext useSortable
-    dnd-kit/utilities
-        CSS
-    States
-        editMode
-    Memos
-        task.Id[]
-    
-    useSortbale .. destructuring it 
-        setNodeRef
-        attributes !!!
-        listeners !!!
-        transform
-        transition
-        isDragging
+# 🧩 Folder Structure
 
-isDragging?
-    < ghost tag > !!!
-otherwise
-    root : ref style className
-        ColTitle : ...attributes ...listeners
-            Flex
-                Btn2toggleEditMode
-                    edit title !!!
-                ... wierd functionalities !!!
-                Del Btn
-            Flex
-                sortableContext items:taskId
-                    maps </ TaskCard> with task
+This section breaks down the files and folders of the Tier Maker App project with personal annotations and insights.
 
+---
+
+### 📁 Root Directory
+
+#### `vite-env.d.ts`
+> A TypeScript declaration file used to provide type definitions for Vite-specific environment variables. It likely contains:
+```ts/// <reference types="vite/client" />
+```
+This helps TypeScript understand Vite's modules and types.
+
+#### `types.ts`
+Defines the main TypeScript types used across the app:
+- `Id` - Likely a unique identifier for tasks or columns
+- `Color` - Represents theme or column color
+- `Column` - Object representing a Kanban column
+- `Task` - Object representing a task or card
+
+#### `main.tsx`
+> Basic setup file for React app
+- Wraps `App.tsx` with `React.StrictMode`
+- Uses `BrowserRouter` from `react-router-dom`
+
+#### `index.css`
+> Appears to be empty or very minimal in styling
+
+---
+
+### 💡 Core App Files
+
+#### `App.tsx`  
+> ⚠️ Handles all routing logic
+- Uses `Routes` and `Route` from `react-router-dom`
+- Maps route `/` to `<KanbanBoard />`
+
+#### `App.css`
+> Contains Tailwind utility class customizations:
+- Custom scrollbar styling using `-webkit-scrollbar`
+- Tailored for horizontal scrolling and `.task` class
+
+---
+
+### ⚙️ Utility / Misc Files
+
+#### `/scripts/lmao.js`
+> A joke file name, but it:
+- Generates random color strings and power values
+- Possibly used for debugging or test data
+
+#### `/icons/`
+Contains SVG-based custom icons:
+- `PlusIcon`, `PokeIcon`, `TrashIcon`
+> 🎨 Creative custom icons using raw SVG code
+
+#### `/constants/`
+- `defaultCols.ts` - Default Kanban columns
+- `defaultTasks.ts` - Sample tasks data
+> Basic preset values to populate the board
+
+---
+
+### 🧱 Components
+
+#### `KanbanBoard.tsx`
+> 🔁 Core logic-heavy component
+
+Uses:
+- `useState`, `useEffect`, `useMemo`
+- `axios` for data handling
+- `dnd-kit/core` & `dnd-kit/sortable` for drag-drop
+
+Handles:
+- Column and task states
+- Drag events: `onDragStart`, `onDragEnd`, `onDragOver`
+- Component rendering:
+  - `<DndContext>`
+  - `<SortableContext>` for columns
+  - `<TheVoid />` for task drop zone
+  - Buttons: Create / Save
+  - `<DragOverlay>` for dragging UI
+
+Defines several utility functions: `deleteTask`, `createNewColumn`, `generateId`, `saveData`, etc.
+
+#### `ColumnContainer.tsx`
+> Represents a draggable Kanban column
+
+- Uses `useSortable` and `SortableContext`
+- Handles `editMode` state for renaming columns
+- Contains task drop zone mapping `<TaskCard />`
+- Uses drag and drop styling and logic
+
+#### `TheVoid.tsx`
+> Handles task sorting within a column
+
+- `useSortable`, `SortableContext`, `useMemo`
+- Creates a memoized task ID list from props
+- Maps each task to a `<TaskCard />`
+- Accepts props: `column`, `deleteTask`, `tasks`
+
+#### `TaskCard.tsx`
+> Represents each draggable card
+
+Uses:
+- `useState` for `editMode` and `mouseIsOver`
+- `useSortable` from `dnd-kit`
+- Adds trash button visibility on hover
+- Uses conditional drag behaviors when in edit mode
+
+---
+
+Each of these components represents a tight integration of **drag-and-drop logic**, **state management**, and **user interactivity**, building up a feature-complete tier-maker style Kanban system.
 
 

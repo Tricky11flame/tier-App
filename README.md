@@ -17,7 +17,11 @@ Built using:
 
 ## 📸 Screenshots
 
- - [Screenshots]()
+ - ![Screenshots](ss.png)
+
+## Demo 
+
+ - ![Demo Video Link]()
 
 ## 🚀 Getting Started
 

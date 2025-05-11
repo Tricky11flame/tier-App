@@ -1,11 +1,11 @@
 // the parent component of our whole kanban board hihi haha :3
 import PlusIcon from "../icons/PlusIcon";
-import { useEffect, useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import { Column, Id, Task } from "../types";
 import ColumnContainer from "./ColumnContainer";
 import defaultCols from "../constants/defaultCols";
 import defaultTasks from "../constants/defaultTask";
-import axios from "axios";
+// import axios from "axios";
 // import PokeIcon from "../icons/PokeIcon";
 // import "../../public/2.png"
 // IMP imports from dnd kit
@@ -35,20 +35,20 @@ import TheVoid from "./TheVoid";
 function KanbanBoard() {
 
   // const kekw = colFetching();
-  useEffect(()=>{
-    axios.get('')
-    .then((res)=>{
-      // the response handling kekw
-    })
-    .catch((err)=>{
-      // error handling :C
-    })
-    .then((err)=>{
-      // permanently runs
-    })
-  ,[]
-  // dependency array : epmty =>?  so that i runs only one time kekw
-  })
+  // useEffect(()=>{
+  //   axios.get('')
+  //   .then((res)=>{
+  //     // the response handling kekw
+  //   })
+  //   .catch((err)=>{
+  //     // error handling :C
+  //   })
+  //   .then((err)=>{
+  //     // permanently runs
+  //   })
+  // ,[]
+  // // dependency array : epmty =>?  so that i runs only one time kekw
+  // })
 
   // imposing the type
   const [columns, setColumns] = useState<Column[]>(defaultCols);

@@ -1,5 +1,5 @@
 // the parent component of our whole kanban board hihi haha :3
-import PlusIcon from "../icons/PlusIcon";
+// import PlusIcon from "../icons/PlusIcon";
 import {  useMemo, useState } from "react";
 import { Column, Id, Task } from "../types";
 import ColumnContainer from "./ColumnContainer";
@@ -26,13 +26,15 @@ import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 // import { createPortal } from "react-dom";
 import TaskCard from "./TaskCard";
 import TheVoid from "./TheVoid";
+import SaveBttn from "./SaveBttn";
+import CreateBttn from "./CreateBttn";
 
 
 // default data start ...
 
 // default data end ...
 
-function KanbanBoard() {
+function TierBoard() {
 
   // const kekw = colFetching();
   // useEffect(()=>{
@@ -71,10 +73,7 @@ function KanbanBoard() {
 
   return (
     <div
-      className="mx-auto my-10 flex
-        min-h-screen  w-full
-        items-center overflow-x-auto
-        overflow-y-hidden px-[40px] "
+      className="mx-auto my-10 flex"
     >
       <DndContext
         sensors={sensors}
@@ -108,33 +107,10 @@ function KanbanBoard() {
               tasks={tasks.filter((task) => task.columnId === "thevoid")}
               />
           </div>
-          {/* ## CREATE BUTTON */}
-          <button
-            onClick={() => {
-              createNewColumn();
-            }}
-            className="h-[60px] w-[200px]  z-20 fixed bottom-3 right-3
-            cursor-pointer rounded-lg bg-mainBackgroundColor
-            border-2 border-columnBackgroundColor p-4 items-center 
-            ring-rose-500 hover:ring-2 flex gap-2">
-            <PlusIcon />
-            Add Column
-          </button>
-          {/* ## SAVE BUTTON */}
-          <button
-            onClick={() => {
-              saveData();
-            }}
-            className="h-[30px] w-[200px]  z-20 fixed bottom-3 left-3
-            cursor-pointer rounded-lg bg-mainBackgroundColor
-            border-2 border-columnBackgroundColor p-4 items-center 
-            ring-rose-500 hover:ring-2 flex gap-2 ">
-            {/* <PokeIcon/> */}
-            <img className="h-6 mx-auto" src={`../../2.png`} alt="loda"/>
-            <div className="mx-auto">
-            SAVE  DATA
-            </div>
-          </button>
+
+          <SaveBttn createNewColumn = {createNewColumn} />
+          <CreateBttn saveData = {saveData} />
+          
         </div>
 
         
@@ -305,4 +281,4 @@ function saveData(){
   console.log("data saved")
   return;
 }
-export default KanbanBoard;
+export default TierBoard;

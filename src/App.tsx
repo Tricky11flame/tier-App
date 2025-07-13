@@ -1,12 +1,12 @@
-import "./App.css";
+import "./index.css";
 import {Routes, Route} from 'react-router-dom'
-import KanbanBoard from "./components/KanbanBoard";
+import Body from "./components/Body";
 function App() {
 
   return(
   <>
     <Routes>
-      <Route path="/" element={<KanbanBoard />} />
+      <Route path="/" element={<Body/>} />
     </Routes>
   </>)
 }
